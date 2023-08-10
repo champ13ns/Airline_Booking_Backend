@@ -15,3 +15,5 @@ app.listen(ServerConfig.PORT,()=>{
     console.log(`server started at port ${ServerConfig.PORT}`)
     Logger.info("Successfully started the server","root",{});
 })  
+
+// netstat -ano , taskkill /PID 26316 /F
