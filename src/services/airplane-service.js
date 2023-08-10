@@ -8,7 +8,7 @@ async function createAirplane(data){
     try{
         const new_airplane = await airplane.create(data);
         return new_airplane;
-    } catch(err){
+    } catch(err){           
         throw err;
     }
 }

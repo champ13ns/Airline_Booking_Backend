@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
      unique:true
     } ,
     cityId:{
-      type: DataTypes.Integer,
+      type:DataTypes.INTEGER,
       allowNull:false
     } 
   }, {
