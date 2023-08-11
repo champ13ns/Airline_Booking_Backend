@@ -14,9 +14,9 @@ async function createCity(data){
     }
 }
 
-async function updateCity(data){
+async function updateCity(data , id){
     try{
-        const updatedCity = await CityObj.update(data);
+        const updatedCity = await CityObj.update(data, id);
         return updateCity;
     } catch(err){
         throw err;
@@ -25,8 +25,8 @@ async function updateCity(data){
 
 async function getCity(id){
     try{
-        const CityObj = await CityObj.get(id);
-        return CityObj;
+        const city = await CityObj.get(id);
+        return city;
     } catch(err){
         throw err;
     }
@@ -44,7 +44,7 @@ async function getAllCities(){
 
 async function deleteCity(id){
     try{    
-        const del_city = await CityObj.delete(id);
+        const del_city = await CityObj.destroy(id);
         return del_city;
     } catch(err){
         throw err;

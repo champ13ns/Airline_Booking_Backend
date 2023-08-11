@@ -13,10 +13,12 @@ router.get('/airplane', AirplaneController.getAllAirplane)
 router.delete('/airplane/:id',AirplaneController.deleteAirplane)
 router.patch('/airplane',AirplaneController.updateAirplane)
 
-router.get('/city/:id' , CityController.getCity);
+
+///api/v1/city -> routes
+router.get('/city/:id' , CityMiddleware.validateGetRequest ,  CityController.getCity);
 router.get('/city' , CityController.getAllCities);
-router.patch('/city',CityController.updateCity)
-router.delete('/city/:id',CityController.deleteCity)
-router.post('/city',CityController.createCity)
+router.patch('/city/:id',CityMiddleware.validateUpdateRequest , CityController.updateCity)
+router.delete('/city/:id', CityMiddleware.validateDeleteRequest ,  CityController.deleteCity)
+router.post('/city', CityMiddleware.validateCreateRequest ,  CityController.createCity)
 
 module.exports = router

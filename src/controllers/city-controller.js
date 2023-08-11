@@ -21,8 +21,8 @@ async function createCity(req,res){
     try{
         const newCity = await CityService.createCity({
             name : req.body.name
-        });
-        SuccessResponse.data = newCity;
+        } );
+        SuccessResponse.data = {newCity};
         SuccessResponse.error={};
         SuccessResponse.message = "Successfully created new city";
         SuccessResponse.success = true;
@@ -36,7 +36,7 @@ async function createCity(req,res){
 async function deleteCity(req,res){
     try{
         const deletedCity = await CityService.deleteCity(req.params.id);
-        SuccessResponse.data = {};
+        SuccessResponse.data =  { deletedCity };
         SuccessResponse.error={};
         SuccessResponse.message = "Successfully deleted city from server";
         SuccessResponse.success = true;
@@ -50,15 +50,17 @@ async function deleteCity(req,res){
 
 async function updateCity(req,res){
     try{
-        const updatedCity = await CityService.updateCity(req.body);
-        SuccessResponse.data = {};
+        const updatedCity = await CityService.updateCity({
+            name : req.body.name
+        }, req.params.id);
         SuccessResponse.error={};
+        SuccessResponse.data = {updatedCity}
         SuccessResponse.message = "Successfully updated city on server";
         SuccessResponse.success = true;
-        res.status(StatusCodes.OK).json(SuccessResponse)
+        console.log(SuccessResponse);
+        res.status(StatusCodes.OK).json(SuccessResponse);
     } catch(err){
         throw err;
-
        throw new AppError(err , StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }

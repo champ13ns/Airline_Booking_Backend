@@ -44,6 +44,8 @@ class CrudRepository{
 
     async update(data, id){
         try{
+            console.log("data in repo layer recvd is ",data);
+            console.log("id in repo layer recvd is ",id);
             const response = await this.model.update(data,{
                 where:{
                     id:id
