@@ -1,6 +1,5 @@
 const { AirplaneRepo } = require('./../repositories/index.js')
 
-const { StatusCodes } = require('http-status-codes')
 
 const airplane = new AirplaneRepo();
 
@@ -16,15 +15,15 @@ async function createAirplane(data){
 async function deleteAirplane(data){
     try{
         const deletedAirplane = await airplane.destroy(data);
-        return deleteAirplane;
+        return deletedAirplane;
     } catch(err){
         throw err;
     }
 }
 
-async function updateAirplane(data){
+async function updateAirplane(data,id){
     try{
-        const updated_airplane = await airplane.update(data);
+        const updated_airplane = await airplane.update(data,id);
         return updated_airplane
     } catch(err){
         throw err;
