@@ -13,14 +13,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/api',apiRoutes);
 
 app.listen(ServerConfig.PORT,async ()=>{
-    const goa = await City.findByPk(6);
-   const Goaairport = await goa.createAirport({name:'International Airport',code:'GOA',address:'Goa'})
-    await goa.removeAirport(Goaairport)
-    // const varanasi = await City.findByPk(1);
-    // console.log("City is ",varanasi);
-    // const IGAirport = await Airport.findByPk(2);
-    // console.log(IGAirport)
-    // await varanasi.removeAirport("AP is ",IGAirport);
+    console.log("Server started on port ",ServerConfig.PORT);
 })  
 
 // netstat -ano , taskkill /PID 26316 /F

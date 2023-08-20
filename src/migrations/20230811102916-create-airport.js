@@ -20,7 +20,12 @@ module.exports = {
       },
       cityId: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull:true,
+        references:{
+          model : 'Cities',
+          key : 'id'
+        },
+        onDelete : 'CASCADE'
       },
       code:{
         type:Sequelize.STRING,
